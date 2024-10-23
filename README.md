@@ -277,3 +277,6 @@ public class StudentController {
 - We use **`@DeleteMapping`** annotation for mapping HTTP DELETE request onto specific handler method
 
 - **`ResponseEntity`** is a powerful and flexible class in Spring used to represent the entire HTTP response, including the status code, headers, and body. It allows developers to customize how the API responds to client requests.
+
+
+- Spring boot annotation sheet link : file:///D:/Java/Spring-Boot/Spring%20Boot2/09%20-%20Spring%20Boot%20-%20Building%20REST%20APIs/013%20Spring%20and%20Spring%20Boot%20Annotations%20Cheat%20Sheet.html

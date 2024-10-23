@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 @RestController
+@RequestMapping("students") // To define base url
 public class StudentController {
     // http://localhost:8080/student
     @GetMapping("student")
@@ -38,7 +39,7 @@ public class StudentController {
     // Spring Boot rest API with path Variable
     // `{id}` is called URI template variable
     // http://localhost:8080/students/2/Pouadjeu/Belvinard
-    @GetMapping("students/{id}/{first-name}/{last-name}")
+    @GetMapping("{id}/{first-name}/{last-name}")
     public ResponseEntity<Student> studentPathVariable(@PathVariable("id") int studentId,
                                                        @PathVariable("first-name") String firstName, @PathVariable("last-name") String lastName) {
         //return  new Student(studentId, "Belvi", "Pouadjeu");
@@ -47,8 +48,8 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
     // Spring boot REST API with @RequestParam                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 uest Param
-    // http://localhost:8080/students/query?id=1&firstName=Pouadjeu&lastName=Belvinard
-    @GetMapping("students/query")
+    // http://localhost:8080/students/query?id=2&firstName=Pouadjeu&lastName=Belvinard
+    @GetMapping("query")
     public ResponseEntity<Student> studentRequestVariable(@RequestParam int id,
                                                           @RequestParam String firstName,
                                                           @RequestParam String lastName) {
@@ -60,7 +61,7 @@ public class StudentController {
     // Spring boot rest api that handles http post request
     // @PostMapping and @RequestBody annotation
     // http://localhost:8080/students/create
-    @PostMapping("students/create")
+    @PostMapping("create")
     @ResponseStatus(HttpStatus.CREATED)
     public Student createStudent(@RequestBody Student student) {
         System.out.println(student.getId());
@@ -70,7 +71,7 @@ public class StudentController {
     }
     // Spring boot rest API that handles HTTP PUT Request - updating existing resources
     // http://localhost:8080/students/{id}/update
-    @PutMapping("students/{id}/update")
+    @PutMapping("{id}/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Student updateStudent(@RequestBody Student student, @PathVariable("id") int id){
         System.out.println(student.getFirstName());
@@ -79,7 +80,7 @@ public class StudentController {
     }
     // Spring boot rest API that handles HTTP DELETE Request - deleting existing resources
     // http://localhost:8080/students/{id}/delete
-    @DeleteMapping("students/{id}/delete")
+    @DeleteMapping("{id}/delete")
     public String deleteStudent(@PathVariable("id") int id){
         System.out.println(id);
         return "Student deleted successfully!!";
